@@ -1,0 +1,20 @@
+version: 2.1
+description: "Aggregates list of specified pattern to  make browsing artifacts easier. Printing them as an HTML index."
+commands:
+  print:
+    parameters:
+      message:
+        type: string
+        default: "CircleCI"
+        description: "The message..."
+      font:
+        type: string
+        default: "notimplemented"
+        description: "Not implemented"
+    steps:
+      - run: 
+          name: Print Banner
+          command: |
+            figlet -v >/dev/null 2>/dev/null || sudo apt install -y figlet >/dev/null 2>/tmp/figlet-install
+            figlet <<parameters.message>> || cat /tmp/figlet-install
+   

@@ -1,0 +1,14 @@
+version: 2.1
+orbs:
+  banners: eddiewebb/banners@volatile
+
+jobs:
+  build:
+    docker:
+      - image: circleci/node:10
+    working_directory: ~/repo
+    steps:
+      - banners/print:
+          message: "Starting build"
+      - banners/ascii_art:
+          image: "someid,dontknowabothisuet"
