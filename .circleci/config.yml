@@ -19,8 +19,7 @@ workflows:
 
 jobs:
   test-locally:
-    docker:
-      - image: circleci/node:10
+    machine: true
     working_directory: ~/repo
     steps:
       - checkout
@@ -49,13 +48,7 @@ jobs:
             circleci config pack src/ > packed.yml
             circleci orb validate packed.yml --token ${CIRCLECI_API_KEY}
             circleci orb publish packed.yml eddiewebb/banners@0.1.${CIRCLE_BUILD_NUM} --token ${CIRCLECI_API_KEY}
-      - install-bats
-      - run:
-          name: Import Tests using BATS
-          command: |
-            export BATS_IMPORT_DEV_ORB="eddiewebb/banners@0.1.${CIRCLE_BUILD_NUM}"
-            bats test
-
+      
   
 
   smoke-test:
