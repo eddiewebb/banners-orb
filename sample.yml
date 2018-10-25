@@ -10,5 +10,5 @@ jobs:
     steps:
       - banners/print:
           message: "Starting build"
-      - banners/ascii_art:
-          image: "someid,dontknowabothisuet"
+     # - banners/ascii_art:
+     #     image: "someid,dontknowabothisuet"
